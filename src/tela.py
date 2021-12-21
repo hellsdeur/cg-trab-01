@@ -1,0 +1,40 @@
+from tkinter import *
+
+class Tela:
+    def __init__(self, tamanhoTela):
+        ## parametros iniciais
+        self.tamanhoTela = tamanhoTela
+        self.tamanhoPixel = int(self.tamanhoTela / 50)
+
+        ## criar o canvas utilizando o tkinter
+        self.master = Tk()
+        self.tela = Canvas(self.master, width=self.tamanhoTela, height=self.tamanhoTela)
+        self.tela.pack()
+
+        self.CriarTemplate()
+
+    ## função que cria a grade
+    def CriarTemplate(self):
+        aux = int(self.tamanhoTela / 2) + (self.tamanhoPixel / 2)
+
+        for x in range(0, self.tamanhoTela, self.tamanhoPixel):  # linhas horizontais
+            self.tela.create_line(x, 0, x, self.tamanhoTela, fill='#808080')
+
+        for y in range(0, self.tamanhoTela, self.tamanhoPixel):  # linhas horizontais
+            self.tela.create_line(0, y, self.tamanhoTela, y, fill='#808080')
+
+        self.tela.create_line(0, aux - self.tamanhoPixel, self.tamanhoTela, aux - self.tamanhoPixel,
+                         fill="#f00")  # linha central - horizontal
+        self.tela.create_line(aux, 0, aux, self.tamanhoTela, fill="#f00")  # linha central - vertical
+
+    # converter coordenadas para o sistema de grade
+    def ConverterCoordenadas(self, x, y):
+        real_x = int((self.tamanhoPixel * x) + (self.tamanhoTela / 2))
+        real_y = int((self.tamanhoTela / 2) - (self.tamanhoPixel * y))
+
+        return real_x, real_y
+
+    # desenha um pixel na grade
+    def DesenharPixel(self, x, y, cor):
+        x1, y1 = self.ConverterCoordenadas(x, y)
+        self.tela.create_rectangle(x1, y1, x1 + self.tamanhoPixel, y1 - self.tamanhoPixel, fill=cor)
