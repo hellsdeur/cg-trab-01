@@ -1,9 +1,9 @@
 from tkinter import mainloop
 
-from src.tela import Tela
+from src import (tela, rasterizacao)
 
 # criação da tela
-tela = Tela(600)
+tela = tela.Tela(600)
 
 # exemplo básico de uso
 tela.DesenharPixel(24, 5, '#f00')
