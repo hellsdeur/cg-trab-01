@@ -18,10 +18,10 @@ class Tela:
         aux = int(self.tamanhoTela / 2) + (self.tamanhoPixel / 2)
 
         for x in range(0, self.tamanhoTela, self.tamanhoPixel):  # linhas horizontais
-            self.tela.create_line(x, 0, x, self.tamanhoTela, fill='#808080')
+            self.tela.create_line(x, 0, x, self.tamanhoTela, fill='#DCDCDC')
 
         for y in range(0, self.tamanhoTela, self.tamanhoPixel):  # linhas horizontais
-            self.tela.create_line(0, y, self.tamanhoTela, y, fill='#808080')
+            self.tela.create_line(0, y, self.tamanhoTela, y, fill='#DCDCDC')
 
         self.tela.create_line(0, aux - self.tamanhoPixel, self.tamanhoTela, aux - self.tamanhoPixel,
                          fill="#f00")  # linha central - horizontal
@@ -38,3 +38,7 @@ class Tela:
     def DesenharPixel(self, x, y, cor):
         x1, y1 = self.ConverterCoordenadas(x, y)
         self.tela.create_rectangle(x1, y1, x1 + self.tamanhoPixel, y1 - self.tamanhoPixel, fill=cor)
+
+    def Desenhar(self, objeto: list, cor):
+        for p in objeto:
+            self.DesenharPixel(p[0], p[1], cor)
