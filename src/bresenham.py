@@ -1,4 +1,4 @@
-from rasterizacao import Rasterizacao
+from src.rasterizacao import Rasterizacao
 
 
 class Bresenham(Rasterizacao):
@@ -17,7 +17,10 @@ class Bresenham(Rasterizacao):
         self.troca_y = False
         self.troca_xy = False
         
-        
+        if ponto1 == ponto2:
+            self.saida = [[self.x1, self.y1]]
+            return
+         
         self.checar_octante()
         
         x = self.x1
@@ -48,7 +51,10 @@ class Bresenham(Rasterizacao):
         delta_x = self.x2 - self.x1
         delta_y = self.y2 - self.y1
         
-        m = delta_y/delta_x
+        if delta_x != 0:
+            m = delta_y/delta_x
+        else:
+            m = 2
         
         if m > 1 or m < -1:
             [self.x1, self.y1] = [self.y1, self.x1]
