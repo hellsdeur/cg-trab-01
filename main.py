@@ -30,8 +30,8 @@ trans_poligono = transformacao.Transformacao(
 )
 
 # trans_poligono.translar(5,5)
-# trans_poligono.escalar(.5, .5)
-trans_poligono.rotacionar([3,3], 270)
+trans_poligono.escalar(5, 5)
+# trans_poligono.rotacionar([3,3], 180)
 
 tela.Desenhar(trans_poligono.saida, azul)
 

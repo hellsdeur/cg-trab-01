@@ -1,4 +1,5 @@
 from src.rasterizacao import Rasterizacao
+from src.polilinha import Polilinha
 from math import pi, sin, cos, radians
 
 
@@ -17,6 +18,10 @@ class Transformacao(Rasterizacao):
             ponto[0] *= esc_x
             ponto[1] *= esc_y
             self.saida.append(ponto)
+        self.saida.append(self.saida[0])
+
+        self.saida = Polilinha(self.saida).saida
+
 
     def rotacionar(self, pivo, angulo):
         # de acordo com a distância pivo-origem, translar objeto para a origem
