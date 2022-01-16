@@ -1,6 +1,6 @@
 from tkinter import mainloop
 
-from src import (tela, bresenham, polilinha, curvas, circulo)
+from src import (tela, bresenham, polilinha, curvas, circulo, transformacao)
 
 # algumas cores
 azul = '#0080ff'
@@ -20,12 +20,20 @@ tela.DesenharPixel(5, 3, '#f00')
 '''
 # c = curvas.Curvas(15, [(0, 0), (5, 5),(10,20), (20, 0)])
 
-c = circulo.Circulo({
-    "centro": [6,3],
-    "raio": 5
-})
+# c = circulo.Circulo({
+#     "centro": [6,3],
+#     "raio": 5
+# })
 
-tela.Desenhar(c.saida, azul)
+trans_poligono = transformacao.Transformacao(
+    entrada=[[0,0], [1,0], [2,0], [3,0], [3,1], [3,2], [3,3], [2,3], [1,3], [0,3], [0,2], [0,1]]
+)
+
+# trans_poligono.translar(5,5)
+# trans_poligono.escalar(.5, .5)
+trans_poligono.rotacionar([3,3], 270)
+
+tela.Desenhar(trans_poligono.saida, azul)
 
 # interrompe a execução dos comandos e mostra a figura na tela
 mainloop()
