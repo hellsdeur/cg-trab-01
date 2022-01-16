@@ -10,7 +10,7 @@ roxo = '#bf00ff'
 amarelo = '#ffff00'
 
 # criação da tela
-tela = tela.Tela(1000)
+tela = tela.Tela(800)
 
 # exemplo básico de uso
 '''
@@ -29,11 +29,10 @@ trans_poligono = transformacao.Transformacao(
     entrada=[[0,0], [1,0], [2,0], [3,0], [3,1], [3,2], [3,3], [2,3], [1,3], [0,3], [0,2], [0,1]]
 )
 
-# trans_poligono.translar(5,5)
-trans_poligono.escalar(5, 5)
-# trans_poligono.rotacionar([3,3], 180)
 
-tela.Desenhar(trans_poligono.saida, azul)
+tela.DesenharPixel(0,0, '#f00')
+
+tela.printMatriz()
 
 # interrompe a execução dos comandos e mostra a figura na tela
 mainloop()

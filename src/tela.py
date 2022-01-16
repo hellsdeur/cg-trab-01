@@ -4,7 +4,15 @@ class Tela:
     def __init__(self, tamanhoTela):
         ## parametros iniciais
         self.tamanhoTela = tamanhoTela
-        self.tamanhoPixel = int(self.tamanhoTela / 50)
+        self.Matriz = []
+        self.tamanhoMatriz = 10
+        self.tamanhoPixel = int(self.tamanhoTela / self.tamanhoMatriz)
+
+        for i in range(self.tamanhoMatriz):
+            linha = []
+            for j in range(self.tamanhoMatriz):
+                linha.append(0)
+            self.Matriz.append(linha)
 
         ## criar o canvas utilizando o tkinter
         self.master = Tk()
@@ -34,11 +42,24 @@ class Tela:
 
         return real_x, real_y
 
+    def ConverterCoordenadasMatriz(self, x, y):
+        coluna = int(x + (self.tamanhoMatriz / 2))
+        linha = int((self.tamanhoMatriz / 2) - y) - 1
+
+        return linha,coluna
+
     # desenha um pixel na grade
     def DesenharPixel(self, x, y, cor):
         x1, y1 = self.ConverterCoordenadas(x, y)
         self.tela.create_rectangle(x1, y1, x1 + self.tamanhoPixel, y1 - self.tamanhoPixel, fill=cor)
 
+        l, c = self.ConverterCoordenadasMatriz(x, y)
+        self.Matriz[l][c] = cor
+
     def Desenhar(self, objeto: list, cor):
         for p in objeto:
             self.DesenharPixel(p[0], p[1], cor)
+
+    def printMatriz(self):
+        for linha in self.Matriz:
+            print(linha)
