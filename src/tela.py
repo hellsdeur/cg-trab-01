@@ -5,7 +5,7 @@ class Tela:
         ## parametros iniciais
         self.tamanhoTela = tamanhoTela
         self.Matriz = []
-        self.tamanhoMatriz = 10
+        self.tamanhoMatriz = 50
         self.tamanhoPixel = int(self.tamanhoTela / self.tamanhoMatriz)
 
         for i in range(self.tamanhoMatriz):
@@ -63,3 +63,7 @@ class Tela:
     def printMatriz(self):
         for linha in self.Matriz:
             print(linha)
+
+    def checarMatriz(self, x, y):
+        l, c = self.ConverterCoordenadasMatriz(x, y)
+        return self.Matriz[l][c]
