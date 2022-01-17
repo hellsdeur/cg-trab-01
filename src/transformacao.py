@@ -1,6 +1,7 @@
 from src.rasterizacao import Rasterizacao
 from src.polilinha import Polilinha
-from math import pi, sin, cos, radians
+from math import sin, cos, radians
+import numpy as np
 
 
 class Transformacao(Rasterizacao):
@@ -22,35 +23,25 @@ class Transformacao(Rasterizacao):
 
         self.saida = Polilinha(self.saida).saida
 
-
     def rotacionar(self, pivo, angulo):
         # de acordo com a distância pivo-origem, translar objeto para a origem
         trans_x = 0 - pivo[0]
         trans_y = 0 - pivo[1]
-        self.translar(trans_x, trans_y)
+        translacao = Transformacao(self.entrada)
+        translacao.translar(trans_x, trans_y)
+        self.entrada = translacao.saida
 
+        # transformar para radianos
         angulo_rad = radians(angulo)
 
+        # montar a matriz de rotação
+        matriz_rotacao = [[cos(angulo_rad), -sin(angulo_rad)], [sin(angulo_rad), cos(angulo_rad)]]
+
+        # multiplicação de matrizes entre a rotação e cada coluna da entrada
         for ponto in self.entrada:
-            print(f"Ponto original: {ponto[0]}, {ponto[1]}")
+            self.saida.append([round(x) for x in np.dot(matriz_rotacao, ponto)])
 
-            print(f"x'\t= x\t\t* cos({angulo})\t- y\t\t* sin({angulo})")
-            print(f"x'\t= {ponto[0]}\t* {round(cos(angulo_rad), 5)}\t\t- {ponto[1]}\t* {round(sin(angulo_rad), 5)}\t = ", end="")
-            ponto[0] = (ponto[0] * round(cos(angulo_rad), 5)) - (ponto[1] * round(sin(angulo_rad), 5))
-            print(ponto[0])
-
-            print('\n')
-
-            print(f"y'\t= x\t\t* sin({angulo})\t+ y\t\t* cos({angulo})")
-            print(f"y'\t= {ponto[0]}\t* {round(sin(angulo_rad), 5)}\t\t+ {ponto[1]}\t* {round(cos(angulo_rad), 5)}\t = ", end="")
-            ponto[1] = (ponto[0] * round(sin(angulo_rad), 5)) + (ponto[1] * round(cos(angulo_rad), 5))
-            print(ponto[1])
-
-            print('\n')
-            print("="*33)
-            print('\n')
-
-            self.saida.append(ponto)
-
-        # retornar para posição inicial
-        self.translar(-trans_x, -trans_y)
+        # translar objeto de volta
+        translacao = Transformacao(self.saida)
+        translacao.translar(-trans_x, -trans_y)
+        self.saida = translacao.saida
