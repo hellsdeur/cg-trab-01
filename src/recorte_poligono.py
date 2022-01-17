@@ -38,12 +38,12 @@ class RecortePoligono(Rasterizacao):
                     novo_poligono.append(list(p2))
                 else:
                     # dentro para fora
-                    novo_poligono.append([self.xmin, int(y1 + (y2 - y1) * (self.xmin - x1) / (x2 - x1))])
+                    novo_poligono.append([self.xmin, round(y1 + (y2 - y1) * (self.xmin - x1) / (x2 - x1))])
 
             else:
                 if x2 >= self.xmin:
                     # fora para dentro
-                    novo_poligono.append([self.xmin, int(y1 + (y2 - y1) * (self.xmin - x1) / (x2 - x1))])
+                    novo_poligono.append([self.xmin, round(y1 + (y2 - y1) * (self.xmin - x1) / (x2 - x1))])
                     novo_poligono.append(p2)
         return novo_poligono
 
@@ -63,12 +63,12 @@ class RecortePoligono(Rasterizacao):
                     novo_poligono.append(list(p2))
                 else:
                     # dentro para fora
-                    novo_poligono.append([self.xmax, int(y1 + (y2 - y1) * (self.xmax - x1) / (x2 - x1))])
+                    novo_poligono.append([self.xmax, round(y1 + (y2 - y1) * (self.xmax - x1) / (x2 - x1))])
 
             else:
                 if x2 <= self.xmax:
                     # fora para dentro
-                    novo_poligono.append([self.xmax, int(y1 + (y2 - y1) * (self.xmax - x1) / (x2 - x1))])
+                    novo_poligono.append([self.xmax, round(y1 + (y2 - y1) * (self.xmax - x1) / (x2 - x1))])
                     novo_poligono.append(p2)
 
         return novo_poligono
@@ -90,12 +90,12 @@ class RecortePoligono(Rasterizacao):
                     novo_poligono.append(list(p2))
                 else:
                     # dentro para fora
-                    novo_poligono.append([int(x1 + (x2 - x1) * (self.ymin - y1) / (y2 - y1)), self.ymin])
+                    novo_poligono.append([round(x1 + (x2 - x1) * (self.ymin - y1) / (y2 - y1)), self.ymin])
 
             else:
                 if y2 >= self.ymin:
                     # fora para dentro
-                    novo_poligono.append([int(x1 + (x2 - x1) * (self.ymin - y1) / (y2 - y1)), self.ymin])
+                    novo_poligono.append([round(x1 + (x2 - x1) * (self.ymin - y1) / (y2 - y1)), self.ymin])
                     novo_poligono.append(p2)
 
         return novo_poligono
@@ -116,12 +116,12 @@ class RecortePoligono(Rasterizacao):
                     novo_poligono.append(list(p2))
                 else:
                     # dentro para fora
-                    novo_poligono.append([int(x1 + (x2 - x1) * (self.ymax - y1) / (y2 - y1)), self.ymax])
+                    novo_poligono.append([round(x1 + (x2 - x1) * (self.ymax - y1) / (y2 - y1)), self.ymax])
 
             else:
                 if y2 <= self.ymax:
                     # fora para dentro
-                    novo_poligono.append([int(x1 + (x2 - x1) * (self.ymax - y1) / (y2 - y1)), self.ymax])
+                    novo_poligono.append([round(x1 + (x2 - x1) * (self.ymax - y1) / (y2 - y1)), self.ymax])
                     novo_poligono.append(p2)
 
         return novo_poligono

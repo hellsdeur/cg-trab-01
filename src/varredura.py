@@ -53,7 +53,7 @@ class Varredura(Rasterizacao):
                     ativos.append(pt)
 
             for i in range(len(ativos)-1, -1, -1):
-                c = ativos[i]#ikkkkkkk
+                c = ativos[i]
                 p_max = poligono[(c.index + c.dir + len(poligono))%len(poligono)]
                 if p_max[1] == y:
                     ativos.pop(i)
@@ -61,8 +61,8 @@ class Varredura(Rasterizacao):
             ativos.sort()
 
             for i in range(0, len(ativos), 2):
-                xmin = int(ativos[i].x_interseccao)
-                xmax = int(ativos[i+1].x_interseccao)
+                xmin = round(ativos[i].x_interseccao)
+                xmax = round(ativos[i+1].x_interseccao)
                 for x in range(xmin, xmax):
                     self.saida.append([x,y])
 

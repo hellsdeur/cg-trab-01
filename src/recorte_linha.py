@@ -41,22 +41,22 @@ class RecorteLinha(Rasterizacao):
 
                 if out & self.cima:
 
-                    x = int(x1 + (x2 - x1) * (self.ymax - y1) / (y2 - y1))
+                    x = round(x1 + (x2 - x1) * (self.ymax - y1) / (y2 - y1))
                     y = self.ymax
 
                 elif out & self.baixo:
 
-                    x = int(x1 + (x2 - x1) * (self.ymin - y1) / (y2 - y1))
+                    x = round(x1 + (x2 - x1) * (self.ymin - y1) / (y2 - y1))
                     y = self.ymin
 
                 elif out & self.direita:
 
-                    y = int(y1 + (y2 - y1) * (self.xmax - x1) / (x2 - x1))
+                    y = round(y1 + (y2 - y1) * (self.xmax - x1) / (x2 - x1))
                     x = self.xmax
 
                 elif out & self.esquerda:
 
-                    y = int(y1 + (y2 - y1) * (self.xmin - x1) / (x2 - x1))
+                    y = round(y1 + (y2 - y1) * (self.xmin - x1) / (x2 - x1))
                     x = self.xmin
 
                 if out == c1:
