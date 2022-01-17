@@ -1,7 +1,7 @@
 from tkinter import mainloop
 
 from src import (tela, bresenham, polilinha, curvas, circulo, transformacao,
-                 preenchimento_recursivo, recorte_linha, recorte_poligono, varredura)
+                 preenchimento_recursivo, recorte_linha, recorte_poligono, varredura, projecao)
 
 # algumas cores
 azul = '#0080ff'
@@ -27,15 +27,32 @@ tela.Desenhar(r.saida, azul)
 tela.Desenhar(poligono.saida, azul)
 '''
 
-pts = [(-5,20),(-5, -20),(17, -20), (17, 20)]
+# pts = [(-5,20),(-5, -20),(17, -20), (17, 20)]
+#
+# pree = varredura.Varredura(pts)
+#
+# tela.Desenhar(pree.saida, azul)
 
-pree = varredura.Varredura(pts)
+cubo = [
+    [0, 0, 0],
+    [1, 0, 0], [2, 0, 0], [3, 0, 0],
+    [3, 1, 0], [3, 2, 0], [3, 3, 0],
+    [2, 3, 0], [1, 3, 0], [0, 3, 0],
+    [0, 2, 0], [0, 1, 0],
+    [0, 0, 3],
+    [1, 0, 3], [2, 0, 3], [3, 0, 3],
+    [3, 1, 3], [3, 2, 3], [3, 3, 3],
+    [2, 3, 3], [1, 3, 3], [0, 3, 3],
+    [0, 2, 3], [0, 1, 3],
+    [0, 0, 1], [0, 0, 2],
+    [3, 0, 1], [3, 0, 2],
+    [3, 3, 1], [3, 3, 2],
+    [0, 3, 1], [0, 3, 2],
+]
 
-tela.Desenhar(pree.saida, azul)
-
-
-
-
+p = projecao.Projecao(cubo)
+p.projetar(plano="xy")
+tela.Desenhar(p.saida, azul)
 
 # interrompe a execução dos comandos e mostra a figura na tela
 mainloop()
