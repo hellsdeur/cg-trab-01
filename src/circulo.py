@@ -6,7 +6,7 @@ class Circulo(Rasterizacao):
         super().__init__(entrada)
 
         self.centro = self.entrada["centro"]
-        self.raio = self.entrada["raio"]
+        self.raio = round(self.entrada["raio"])
 
         self.ponto_medio()
 

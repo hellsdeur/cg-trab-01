@@ -13,9 +13,7 @@ linha = bresenham.Bresenham((5, -2), (5, 10))
 tela.Desenhar(linha.saida, azul)
 
 
-
-
-
+-------------------------
 #POLILINHA
 pts = [(3, 4), (-7, 1), (2, -9)]
 
@@ -23,7 +21,7 @@ linhas = polilinha.Polilinha(pts)
 tela.Desenhar(linhas.saida, azul)
 
 
-
+-------------------------
 
 #CURVAS 1
 c = curvas.Curvas(15, [(0, 0), (5, 5),(10,20), (20, 0)])
@@ -36,5 +34,78 @@ tela.Desenhar(c.saida, azul)
 
 
 #CURVAS 3
-c = curvas.Curvas(3, [(-4, 20), (0, -20), (20, 0)])
+c = curvas.Curvas(10, [(-14, 20), (-20, 10), (0, 0), (-8, -10)])
 tela.Desenhar(c.saida, azul)
+
+
+-------------------------
+
+
+#CIRCULO 1
+obj = circulo.Circulo({
+    "centro": [6,3],
+    "raio": 10
+})
+tela.Desenhar(obj.saida, azul)
+
+
+#CIRCULO 2
+obj = circulo.Circulo({
+    "centro": [0,0],
+    "raio": 5
+})
+
+tela.Desenhar(obj.saida, azul)
+
+
+#CIRCULO 3
+obj = circulo.Circulo({
+    "centro": [11,-7],
+    "raio": 7
+})
+
+tela.Desenhar(obj.saida, azul)
+
+
+
+-------------------------
+
+
+#PREENCHIMENTO RECURSIVO 1
+pts = [(3, 4), (-7, 1), (2, -9)]
+
+obj = polilinha.Polilinha(pts, fechar=True)
+tela.Desenhar(obj.saida, azul)
+
+pr = preenchimento_recursivo.Preenchimento((0,0), verde, azul, tela)
+
+
+#PREENCHIMENTO RECURSIVO 2
+pts = [(3, 4), (3, -2), (-5, -2), (-5, 4)]
+
+obj = polilinha.Polilinha(pts, fechar=True)
+tela.Desenhar(obj.saida, azul)
+
+pr = preenchimento_recursivo.Preenchimento((2,2), verde, azul, tela)
+
+
+-------------------------
+
+
+#SCANLINE 1
+pts = [(-4, 0), (8,-16), (20, 5)]
+
+obj = varredura.Varredura(pts)
+tela.Desenhar(obj.saida, azul)
+
+
+#SCANLINE 2
+pts = [(-6,-6), (8,-4), (8,12), (0,8), (-8,14)]
+
+obj = varredura.Varredura(pts)
+tela.Desenhar(obj.saida, azul)
+
+obj = polilinha.Polilinha(pts, fechar=True)
+tela.Desenhar(obj.saida, vermelho)
+
+

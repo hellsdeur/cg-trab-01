@@ -14,13 +14,14 @@ amarelo = '#ffff00'
 # criação da tela
 tela = tela.Tela(800)
 
+p1, p2 = (-7,-5),(-1, 1)
+xmin = -2
+xmax = 2
+ymin = -1
+ymax = 1
+r = recorte_linha.RecorteLinha(p1, p2, xmin, xmax, ymin, ymax)
+tela.destacarJanela(xmin, xmax, ymin, ymax)
 
-obj = circulo.Circulo({
-    "centro": [11,-7],
-    "raio": 7
-})
-
-tela.Desenhar(obj.saida, azul)
 
 
 # interrompe a execução dos comandos e mostra a figura na tela
