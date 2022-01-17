@@ -41,31 +41,24 @@ class RecorteLinha(Rasterizacao):
 
                 if out & self.cima:
 
-                    # point is above the clip rectangle
                     x = int(x1 + (x2 - x1) * (self.ymax - y1) / (y2 - y1))
                     y = self.ymax
 
                 elif out & self.baixo:
 
-                    # point is below the clip rectangle
                     x = int(x1 + (x2 - x1) * (self.ymin - y1) / (y2 - y1))
                     y = self.ymin
 
                 elif out & self.direita:
 
-                    # point is to the right of the clip rectangle
                     y = int(y1 + (y2 - y1) * (self.xmax - x1) / (x2 - x1))
                     x = self.xmax
 
                 elif out & self.esquerda:
 
-                    # point is to the left of the clip rectangle
                     y = int(y1 + (y2 - y1) * (self.xmin - x1) / (x2 - x1))
                     x = self.xmin
 
-                    # Now intersection point x, y is found
-                    # We replace point outside clipping rectangle
-                    # by intersection point
                 if out == c1:
                     p1[0] = x
                     p1[1] = y
