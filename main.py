@@ -14,13 +14,23 @@ amarelo = '#ffff00'
 # criação da tela
 tela = tela.Tela(800)
 
-p1, p2 = (-7,-5),(-1, 1)
-xmin = -2
-xmax = 2
-ymin = -1
-ymax = 1
-r = recorte_linha.RecorteLinha(p1, p2, xmin, xmax, ymin, ymax)
+
+pts = [(-5,5),(-5, -5),(5, -5), (5, 5)]
+xmin = -1
+xmax = 10
+ymin = -9
+ymax = 9
+
+obj = recorte_poligono.RecortePoligono(pts, xmin, xmax, ymin, ymax)
 tela.destacarJanela(xmin, xmax, ymin, ymax)
+tela.Desenhar(obj.saida, azul)
+
+'''
+poligono_original = polilinha.Polilinha(pts, fechar=True)
+tela.Desenhar(poligono_original.saida, azul)
+'''
+
+
 
 
 

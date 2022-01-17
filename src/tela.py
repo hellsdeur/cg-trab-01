@@ -73,4 +73,4 @@ class Tela:
 
         xmin, ymin = self.ConverterCoordenadas(xmin, ymin)
         xmax, ymax = self.ConverterCoordenadas(xmax+1, ymax+1)
-        self.tela.create_rectangle(xmin, ymin, xmax, ymax, outline='red')
+        self.tela.create_rectangle(xmin, ymin, xmax, ymax, outline='green')

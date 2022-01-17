@@ -109,3 +109,75 @@ obj = polilinha.Polilinha(pts, fechar=True)
 tela.Desenhar(obj.saida, vermelho)
 
 
+------------------------
+
+#RECORTE DE LINHA 1
+p1, p2 = (-7,-5),(15, 14)
+xmin = -10
+xmax = 2
+ymin = -15
+ymax = 1
+obj = recorte_linha.RecorteLinha(p1, p2, xmin, xmax, ymin, ymax)
+tela.destacarJanela(xmin, xmax, ymin, ymax)
+
+tela.Desenhar(obj.saida, azul)
+
+
+#RECORTE DE LINHA 2
+p1, p2 = (-7,9),(1, 1)
+xmin = -10
+xmax = 2
+ymin = -5
+ymax = 10
+obj = recorte_linha.RecorteLinha(p1, p2, xmin, xmax, ymin, ymax)
+tela.destacarJanela(xmin, xmax, ymin, ymax)
+
+tela.Desenhar(obj.saida, azul)
+
+
+#RECORTE DE LINHA 3
+p1, p2 = (-7,-6),(1, -8)
+xmin = -10
+xmax = 2
+ymin = -5
+ymax = 10
+obj = recorte_linha.RecorteLinha(p1, p2, xmin, xmax, ymin, ymax)
+tela.destacarJanela(xmin, xmax, ymin, ymax)
+
+tela.Desenhar(obj.saida, azul)
+
+-----------------------
+
+
+#RECORTE DE POLIGONO 1
+pts = [(-5,20),(-3, -1),(5, -2)]
+xmin = -1
+xmax = 10
+ymin = -9
+ymax = 9
+
+obj = recorte_poligono.RecortePoligono(pts, xmin, xmax, ymin, ymax)
+tela.destacarJanela(xmin, xmax, ymin, ymax)
+tela.Desenhar(obj.saida, azul)
+
+'''
+poligono_original = polilinha.Polilinha(pts, fechar=True)
+tela.Desenhar(poligono_original.saida, azul)
+'''
+
+
+#RECORTE DE POLIGONO 2
+pts = [(-5,5),(-5, -5),(5, -5), (5, 5)]
+xmin = -1
+xmax = 10
+ymin = -9
+ymax = 9
+
+obj = recorte_poligono.RecortePoligono(pts, xmin, xmax, ymin, ymax)
+tela.destacarJanela(xmin, xmax, ymin, ymax)
+tela.Desenhar(obj.saida, azul)
+
+'''
+poligono_original = polilinha.Polilinha(pts, fechar=True)
+tela.Desenhar(poligono_original.saida, azul)
+'''
