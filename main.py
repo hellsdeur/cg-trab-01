@@ -1,7 +1,7 @@
 from tkinter import mainloop
 
 from src import (tela, bresenham, polilinha, curvas, circulo, transformacao,
-                 preenchimento_recursivo, recorte_linha)
+                 preenchimento_recursivo, recorte_linha, recorte_poligono)
 
 # algumas cores
 azul = '#0080ff'
@@ -13,32 +13,24 @@ amarelo = '#ffff00'
 # criação da tela
 tela = tela.Tela(800)
 
-# exemplo básico de uso
-'''
-tela.DesenharPixel(24, 5, '#f00')
-tela.DesenharPixel(5, 7, '#f00')
-tela.DesenharPixel(5, 3, '#f00')
-'''
-# c = curvas.Curvas(15, [(0, 0), (5, 5),(10,20), (20, 0)])
 
-# c = circulo.Circulo({
-#     "centro": [6,3],
-#     "raio": 5
-# })
 
-p1, p2 = (-7,-5),(-1, 1)
-xmin = -2
-xmax = 2
-ymin = -1
-ymax = 1
-r = recorte_linha.RecorteLinha(p1, p2, xmin, xmax, ymin, ymax)
+pts = [(-5,20),(-3, -19),(17, 0)]
+xmin = -1
+xmax = 10
+ymin = -9
+ymax = 9
+r = recorte_poligono.RecortePoligono(pts, xmin, xmax, ymin, ymax)
 tela.destacarJanela(xmin, xmax, ymin, ymax)
-
+poligono = polilinha.Polilinha(pts, fechar=True)
 tela.Desenhar(r.saida, azul)
+tela.Desenhar(poligono.saida, azul)
 
-linha = bresenham.Bresenham(p1, p2)
 
-#tela.Desenhar(linha.saida, azul)
+#tela.Desenhar(linha2.saida, azul)
+
+
+
 
 
 # interrompe a execução dos comandos e mostra a figura na tela

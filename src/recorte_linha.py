@@ -1,6 +1,6 @@
 from src.rasterizacao import Rasterizacao
 from src.bresenham import *
-import math
+
 
 class RecorteLinha(Rasterizacao):
     def __init__(self, p1, p2, xmin, xmax, ymin, ymax):
@@ -77,16 +77,6 @@ class RecorteLinha(Rasterizacao):
                     c2 = self.binario(p2)
 
 
-                '''
-                x_medio = int((p1[0] + p2[0]) / 2)
-                y_medio = int((p1[1] + p2[1]) / 2)
-    
-                p_medio = [x_medio, y_medio]
-    
-                self.cohem_sutherland(p1, p_medio)
-                self.cohem_sutherland(p_medio, p2)
-    '''
-
     def binario(self, ponto):
         x = ponto[0]
         y = ponto[1]
@@ -103,16 +93,3 @@ class RecorteLinha(Rasterizacao):
             return 1
         else:
             return 0
-'''
-    def acharBit(self, bin_p1, bin_p2):
-        index1, index2 = 5, 5
-        if bin_p1 != 0:
-            index1 = self.getFirstSetBitPos(bin_p1)
-        if bin_p2 != 0:
-            index2 = self.getFirstSetBitPos(bin_p2)
-
-        return min(index1, index2)
-
-    def getFirstSetBitPos(self, n):
-        return math.log2(n & (-n)) + 1
-'''
