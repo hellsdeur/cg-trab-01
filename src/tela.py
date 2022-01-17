@@ -35,6 +35,7 @@ class Tela:
                          fill="#f00")  # linha central - horizontal
         self.tela.create_line(aux, 0, aux, self.tamanhoTela, fill="#f00")  # linha central - vertical
 
+
     # converter coordenadas para o sistema de grade
     def ConverterCoordenadas(self, x, y):
         real_x = int((self.tamanhoPixel * x) + (self.tamanhoTela / 2))
@@ -46,7 +47,7 @@ class Tela:
         coluna = int(x + (self.tamanhoMatriz / 2))
         linha = int((self.tamanhoMatriz / 2) - y) - 1
 
-        return linha,coluna
+        return linha, coluna
 
     # desenha um pixel na grade
     def DesenharPixel(self, x, y, cor):
@@ -67,3 +68,9 @@ class Tela:
     def checarMatriz(self, x, y):
         l, c = self.ConverterCoordenadasMatriz(x, y)
         return self.Matriz[l][c]
+
+    def destacarJanela(self, xmin, xmax, ymin, ymax):
+
+        xmin, ymin = self.ConverterCoordenadas(xmin, ymin)
+        xmax, ymax = self.ConverterCoordenadas(xmax+1, ymax+1)
+        self.tela.create_rectangle(xmin, ymin, xmax, ymax, outline='red')

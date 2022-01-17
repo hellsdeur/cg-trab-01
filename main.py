@@ -1,6 +1,7 @@
 from tkinter import mainloop
 
-from src import (tela, bresenham, polilinha, curvas, circulo, transformacao, preenchimento_recursivo)
+from src import (tela, bresenham, polilinha, curvas, circulo, transformacao,
+                 preenchimento_recursivo, recorte_linha)
 
 # algumas cores
 azul = '#0080ff'
@@ -25,21 +26,19 @@ tela.DesenharPixel(5, 3, '#f00')
 #     "raio": 5
 # })
 
-trans_poligono = transformacao.Transformacao(
-    entrada=[[0,0], [1,0], [2,0], [3,0], [3,1], [3,2], [3,3], [2,3], [1,3], [0,3], [0,2], [0,1]]
-)
+p1, p2 = (-7,-5),(-1, 1)
+xmin = -2
+xmax = 2
+ymin = -1
+ymax = 1
+r = recorte_linha.RecorteLinha(p1, p2, xmin, xmax, ymin, ymax)
+tela.destacarJanela(xmin, xmax, ymin, ymax)
 
-# trans_poligono.translar(5,5)
-trans_poligono.escalar(5, 5)
-# trans_poligono.rotacionar([3,3], 180)
+tela.Desenhar(r.saida, azul)
 
-tela.Desenhar(trans_poligono.saida, azul)
-pr = preenchimento_recursivo.Preenchimento((3,3), '#f00', azul, tela)
+linha = bresenham.Bresenham(p1, p2)
 
-
-
-tela.printMatriz()
-
+#tela.Desenhar(linha.saida, azul)
 
 
 # interrompe a execução dos comandos e mostra a figura na tela
