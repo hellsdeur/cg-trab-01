@@ -1,8 +1,8 @@
 from tkinter import mainloop
 
 from src import (tela, bresenham, polilinha, curvas, circulo, transformacao,
-                 preenchimento_recursivo, recorte_linha, recorte_poligono,
-                 varredura)
+                 preenchimento_recursivo, varredura, projecao, recorte_linha,
+                 recorte_poligono)
 
 # algumas cores
 azul = '#0080ff'
@@ -15,7 +15,13 @@ amarelo = '#ffff00'
 tela = tela.Tela(800)
 
 
-c = curvas.Curvas(3, [(-4, 20),(-1, ) (0, 0), (-8, 2)])
-tela.Desenhar(c.saida, azul)
+obj = circulo.Circulo({
+    "centro": [11,-7],
+    "raio": 7
+})
 
+tela.Desenhar(obj.saida, azul)
+
+
+# interrompe a execução dos comandos e mostra a figura na tela
 mainloop()
