@@ -181,3 +181,50 @@ tela.Desenhar(obj.saida, azul)
 poligono_original = polilinha.Polilinha(pts, fechar=True)
 tela.Desenhar(poligono_original.saida, azul)
 '''
+
+-----------------------
+
+# TRANSFORMAÇÃO 1
+quadrado = [
+    [0,0], [1,0], [2,0], [3,0],
+    [3,1], [3,2], [3,3], [2,3],
+    [1,3], [0,3], [0,2], [0,1]
+]
+objeto = transformacao.Transformacao(entrada=quadrado)
+# objeto.translar(5,5)
+# objeto.escalar(6, 6)
+# objeto.rotacionar([3, 3], 90)
+
+tela.Desenhar(objeto.saida, azul)
+
+
+
+# TRANSFORMAÇÃO 2
+quadrado = [
+    [5, 5], [6, 5], [7, 5], [8, 5],
+    [8, 6], [8, 7], [8, 8], [7, 8],
+    [6, 8], [5, 8], [5, 7], [5, 6]
+]
+objeto = transformacao.Transformacao(entrada=quadrado)
+# objeto.translar(5,5)
+# objeto.escalar(1, 3)
+# objeto.rotacionar([5, 5], 45)
+
+tela.Desenhar(objeto.saida, azul)
+
+-----------------------
+
+# PROJEÇÃO
+cubo = [
+    [0, 0, 0], [3, 0, 0], [3, 3, 0], [0, 3, 0],
+    [0, 0, 3], [3, 0, 3], [3, 3, 3], [0, 3, 3]
+]
+
+for coordenada in cubo:
+    coordenada[2] += -10
+
+objeto = projecao.Projecao(cubo)
+objeto.projecao(plano="xy")
+objeto.perspectiva(dist=-20)
+
+tela.Desenhar(objeto.saida, azul)
