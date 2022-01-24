@@ -215,16 +215,14 @@ tela.Desenhar(objeto.saida, azul)
 -----------------------
 
 # PROJEÇÃO
+
 cubo = [
-    [0, 0, 0], [3, 0, 0], [3, 3, 0], [0, 3, 0],
-    [0, 0, 3], [3, 0, 3], [3, 3, 3], [0, 3, 3]
+    [0, 0, 0], [4, 0, 0], [4, 4, 0], [0, 4, 0],
+    [0, 0, 4], [4, 0, 4], [4, 4, 4], [0, 4, 4]
 ]
 
-for coordenada in cubo:
-    coordenada[2] += -10
-
-objeto = projecao.Projecao(cubo)
-objeto.projecao(plano="xy")
-objeto.perspectiva(dist=-20)
+objeto = projecao.Projecao(entrada=cubo, recuo=-10)
+objeto.projetar()
+# objeto.perspectiva(dist=-30)
 
 tela.Desenhar(objeto.saida, azul)

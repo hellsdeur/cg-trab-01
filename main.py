@@ -15,20 +15,18 @@ amarelo = '#ffff00'
 tela = tela.Tela(800)
 
 
-pts = [(-5,5),(-5, -5),(5, -5), (5, 5)]
-xmin = -1
-xmax = 10
-ymin = -9
-ymax = 9
 
-obj = recorte_poligono.RecortePoligono(pts, xmin, xmax, ymin, ymax)
-tela.destacarJanela(xmin, xmax, ymin, ymax)
-tela.Desenhar(obj.saida, azul)
 
-'''
-poligono_original = polilinha.Polilinha(pts, fechar=True)
-tela.Desenhar(poligono_original.saida, azul)
-'''
+cubo = [
+    [0, 0, 0], [4, 0, 0], [4, 4, 0], [0, 4, 0],
+    [0, 0, 4], [4, 0, 4], [4, 4, 4], [0, 4, 4]
+]
+
+objeto = projecao.Projecao(entrada=cubo, recuo=-10)
+objeto.projetar()
+# objeto.perspectiva(dist=-30)
+
+tela.Desenhar(objeto.saida, azul)
 
 
 

@@ -7,14 +7,17 @@ import numpy as np
 class Transformacao(Rasterizacao):
     def __init__(self, entrada):
         super().__init__(entrada)
+        self.saida = entrada
 
     def translar(self, trans_x, trans_y):
+        self.saida = []
         for ponto in self.entrada:
             ponto[0] += trans_x
             ponto[1] += trans_y
             self.saida.append(ponto)
 
     def escalar(self, esc_x, esc_y):
+        self.saida = []
         for ponto in self.entrada:
             ponto[0] *= esc_x
             ponto[1] *= esc_y
@@ -24,6 +27,7 @@ class Transformacao(Rasterizacao):
         self.saida = Polilinha(self.saida).saida
 
     def rotacionar(self, pivo, angulo):
+        self.saida = []
         # de acordo com a distância pivo-origem, translar objeto para a origem
         trans_x = 0 - pivo[0]
         trans_y = 0 - pivo[1]
