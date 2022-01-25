@@ -12,21 +12,10 @@ roxo = '#bf00ff'
 amarelo = '#ffff00'
 
 # criação da tela
-tela = tela.Tela(800)
+tela = tela.Tela(600)
 
 
-
-
-cubo = [
-    [0, 0, 0], [4, 0, 0], [4, 4, 0], [0, 4, 0],
-    [0, 0, 4], [4, 0, 4], [4, 4, 4], [0, 4, 4]
-]
-
-objeto = projecao.Projecao(entrada=cubo, recuo=-10)
-objeto.projetar()
-# objeto.perspectiva(dist=-30)
-
-tela.Desenhar(objeto.saida, azul)
+# COLOQUE OS EXEMPLOS AQUI
 
 
 
